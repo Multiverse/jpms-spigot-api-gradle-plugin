@@ -1,0 +1,39 @@
+plugins {
+    id 'org.gradlex.extra-java-module-info'
+}
+
+extraJavaModuleInfo {
+    module('com.google.code.findbugs:jsr305', 'javax.annotation')
+    module('com.google.guava:failureaccess', 'com.google.guava.failureaccess') {
+        exportAllPackages()
+    }
+    module('com.google.guava:listenablefuture', 'com.google.guava.listenablefuture')
+    module('com.google.j2objc:j2objc-annotations', 'com.google.j2objc.annotations') {
+        exportAllPackages()
+    }
+    module('com.google.guava:guava', 'com.google.guava') {
+        overrideModuleName()
+        requiresTransitive('javax.annotation')
+        requiresTransitive('com.google.guava.failureaccess')
+        requiresTransitive('com.google.guava.listenablefuture')
+        requiresTransitive('com.google.j2objc.annotations')
+        exportAllPackages()
+    }
+    module('commons-lang:commons-lang', 'org.apache.commons.lang') {
+        overrideModuleName()
+        exportAllPackages()
+    }
+    module('net.md-5:bungeecord-chat', 'net.md_5.bungee') {
+        requiresTransitive('com.google.gson')
+        exportAllPackages()
+    }
+    module('org.spigotmc:spigot-api', 'org.bukkit') {
+        requiresTransitive('org.yaml.snakeyaml')
+        requiresTransitive('com.google.gson')
+        requiresTransitive('com.google.guava')
+        requiresTransitive('java.logging')
+        requiresTransitive('net.md_5.bungee')
+        requiresTransitive('org.apache.commons.lang')
+        exportAllPackages()
+    }
+}

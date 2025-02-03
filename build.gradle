@@ -1,0 +1,46 @@
+plugins {
+    id 'groovy'
+    id 'groovy-gradle-plugin'
+    id 'maven-publish'
+}
+
+def spigotVersion = '1.18.2-R0.1-SNAPSHOT'
+
+group = 'org.mvplugins.gradle.jpms'
+version = spigotVersion
+
+repositories {
+    mavenCentral()
+    gradlePluginPortal()
+
+    maven {
+        url = uri('https://hub.spigotmc.org/nexus/content/repositories/snapshots/')
+    }
+}
+
+dependencies {
+    implementation gradleApi()
+    implementation 'org.gradlex.extra-java-module-info:org.gradlex.extra-java-module-info.gradle.plugin:1.10'
+
+    testImplementation "org.spigotmc:spigot-api:${spigotVersion}"
+    testImplementation 'org.spockframework:spock-core:2.3-groovy-3.0'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "multiverse"
+            url = 'https://repo.onarandombox.com/multiverse-snapshots'
+            credentials(PasswordCredentials)
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+tasks.withType(Test).configureEach {
+    systemProperty 'spigotVersion', spigotVersion
+}

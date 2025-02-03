@@ -1,0 +1,29 @@
+name: Publish on Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'adopt'
+          cache: gradle
+
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@v1
+
+      - name: Build & Publish
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: >
+            clean build publish
+              -PmultiverseUsername=${{ secrets.REPOSILITE_REPO_USERNAME }}
+              -PmultiversePassword=${{ secrets.REPOSILITE_REPO_PASSWORD }}
