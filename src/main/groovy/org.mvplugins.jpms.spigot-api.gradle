@@ -3,20 +3,27 @@ plugins {
 }
 
 extraJavaModuleInfo {
-    module('com.google.code.findbugs:jsr305', 'javax.annotation')
+    module('com.google.code.findbugs:jsr305', 'javax.annotation') {
+        exportAllPackages()
+    }
     module('com.google.errorprone:error_prone_annotations', 'com.google.errorprone.annotations') {
+        preserveExisting()
         exportAllPackages()
     }
     module('com.google.guava:failureaccess', 'com.google.guava.failureaccess') {
         overrideModuleName()
         exportAllPackages()
     }
-    module('com.google.guava:listenablefuture', 'com.google.guava.listenablefuture')
+    module('com.google.guava:listenablefuture', 'com.google.guava.listenablefuture') {
+        preserveExisting()
+        exportAllPackages()
+    }
     module('com.google.j2objc:j2objc-annotations', 'com.google.j2objc.annotations') {
         preserveExisting()
         exportAllPackages()
     }
     module('org.checkerframework:checker-qual', 'org.checkerframework.checker.qual') {
+        preserveExisting()
         exportAllPackages()
     }
     module('com.google.guava:guava', 'com.google.guava') {
@@ -38,6 +45,7 @@ extraJavaModuleInfo {
         exportAllPackages()
     }
     module('org.yaml:snakeyaml', 'org.yaml.snakeyaml') {
+        preserveExisting()
         exportAllPackages()
     }
     module('org.spigotmc:spigot-api', 'org.bukkit') {
