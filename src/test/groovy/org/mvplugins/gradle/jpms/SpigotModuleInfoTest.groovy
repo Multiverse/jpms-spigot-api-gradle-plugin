@@ -39,6 +39,10 @@ class SpigotModuleInfoTest extends Specification {
             dependencies {
                 implementation 'org.spigotmc:spigot-api:${spigotVersion}'
             }
+            
+            extraJavaModuleInfo {
+                failOnAutomaticModules.set(true)
+            }
         """
     }
 
