@@ -2,6 +2,15 @@ plugins {
     id 'org.gradlex.extra-java-module-info'
 }
 
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'com.google.guava:listenablefuture'
+    compileOnly 'com.google.code.findbugs:jsr305'
+}
+
 extraJavaModuleInfo {
     module('com.google.code.findbugs:jsr305', 'javax.annotation')
     module('com.google.guava:failureaccess', 'com.google.guava.failureaccess') {
