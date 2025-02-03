@@ -3,6 +3,10 @@ plugins {
 }
 
 extraJavaModuleInfo {
+    module('com.google.code.gson:gson', 'com.google.gson') {
+        preserveExisting()
+    }
+
     module('com.google.code.findbugs:jsr305', 'javax.annotation') {
         exportAllPackages()
     }
@@ -36,25 +40,25 @@ extraJavaModuleInfo {
         requiresTransitive('org.checkerframework.checker.qual')
         exportAllPackages()
     }
-    module('commons-lang:commons-lang', 'org.apache.commons.lang') {
-        overrideModuleName()
-        exportAllPackages()
-    }
+
     module('net.md-5:bungeecord-chat', 'net.md_5.bungee') {
         requiresTransitive('com.google.gson')
+        requiresTransitive('com.google.guava')
         exportAllPackages()
     }
+
     module('org.yaml:snakeyaml', 'org.yaml.snakeyaml') {
         preserveExisting()
         exportAllPackages()
     }
+
     module('org.spigotmc:spigot-api', 'org.bukkit') {
-        requiresTransitive('org.yaml.snakeyaml')
+        requiresTransitive('java.logging')
         requiresTransitive('com.google.gson')
         requiresTransitive('com.google.guava')
-        requiresTransitive('java.logging')
         requiresTransitive('net.md_5.bungee')
-        requiresTransitive('org.apache.commons.lang')
+        requiresTransitive('org.joml')
+        requiresTransitive('org.yaml.snakeyaml')
         exportAllPackages()
     }
 }

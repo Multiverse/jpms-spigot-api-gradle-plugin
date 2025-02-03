@@ -4,7 +4,7 @@ plugins {
     id 'maven-publish'
 }
 
-def spigotVersion = '1.18.2-R0.1-SNAPSHOT'
+def spigotVersion = '1.20.6-R0.1-SNAPSHOT'
 
 group = 'org.mvplugins.gradle.jpms'
 version = spigotVersion
