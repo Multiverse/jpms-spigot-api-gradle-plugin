@@ -5,10 +5,12 @@ plugins {
 extraJavaModuleInfo {
     module('com.google.code.findbugs:jsr305', 'javax.annotation')
     module('com.google.guava:failureaccess', 'com.google.guava.failureaccess') {
+        overrideModuleName()
         exportAllPackages()
     }
     module('com.google.guava:listenablefuture', 'com.google.guava.listenablefuture')
     module('com.google.j2objc:j2objc-annotations', 'com.google.j2objc.annotations') {
+        preserveExisting()
         exportAllPackages()
     }
     module('com.google.guava:guava', 'com.google.guava') {
