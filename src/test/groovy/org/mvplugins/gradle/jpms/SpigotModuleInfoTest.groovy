@@ -37,8 +37,6 @@ class SpigotModuleInfoTest extends Specification {
             }
             
             dependencies {
-                compileOnly 'com.google.guava:listenablefuture'
-                compileOnly 'com.google.code.findbugs:jsr305'
                 implementation 'org.spigotmc:spigot-api:${spigotVersion}'
             }
         """
