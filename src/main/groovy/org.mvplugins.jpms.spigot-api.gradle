@@ -4,6 +4,9 @@ plugins {
 
 extraJavaModuleInfo {
     module('com.google.code.findbugs:jsr305', 'javax.annotation')
+    module('com.google.errorprone:error_prone_annotations', 'com.google.errorprone.annotations') {
+        exportAllPackages()
+    }
     module('com.google.guava:failureaccess', 'com.google.guava.failureaccess') {
         overrideModuleName()
         exportAllPackages()
@@ -13,12 +16,17 @@ extraJavaModuleInfo {
         preserveExisting()
         exportAllPackages()
     }
+    module('org.checkerframework:checker-qual', 'org.checkerframework.checker.qual') {
+        exportAllPackages()
+    }
     module('com.google.guava:guava', 'com.google.guava') {
         overrideModuleName()
         requiresTransitive('javax.annotation')
+        requiresTransitive('com.google.errorprone.annotations')
         requiresTransitive('com.google.guava.failureaccess')
         requiresTransitive('com.google.guava.listenablefuture')
         requiresTransitive('com.google.j2objc.annotations')
+        requiresTransitive('org.checkerframework.checker.qual')
         exportAllPackages()
     }
     module('commons-lang:commons-lang', 'org.apache.commons.lang') {
@@ -27,6 +35,9 @@ extraJavaModuleInfo {
     }
     module('net.md-5:bungeecord-chat', 'net.md_5.bungee') {
         requiresTransitive('com.google.gson')
+        exportAllPackages()
+    }
+    module('org.yaml:snakeyaml', 'org.yaml.snakeyaml') {
         exportAllPackages()
     }
     module('org.spigotmc:spigot-api', 'org.bukkit') {
